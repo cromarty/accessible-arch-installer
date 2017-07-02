@@ -4,15 +4,11 @@ all :
 
 
 install :
-	[ -d "${AAI_DIR}" ] || mkdir -p "${AAI_DIR}"
-	cp -r ./lang "${AAI_DIR}"
-	cp -r ./lib "${AAI_DIR}"
-	cp -r ./boot "${AAI_DIR}"
-	cp -r ./extra "${AAI_DIR}"
-	cp -r ./etc "${AAI_DIR}"
-
-	[ -d $(DESTDIR)/usr/bin ] || mkdir $(DESTDIR)/usr/bin
-	cp arch-installer.sh $(DESTDIR)/usr/bin
-	cp etc/accessible-arch-installer.conf $(DESTDIR)/etc
-
+	install -m644 -d ./lang /usr/share/accessible-arch-installer
+	install -m644 -d ./lib /usr/share/accessible-arch-installer
+	install -m644 -d ./boot /usr/share/accessible-arch-installer
+	install -m644 -d ./extra /usr/share/accessible-arch-installer
+	install -m644 -d ./etc /usr/share/accessible-arch-installer
+	install -m755 arch-installer.sh $(DESTDIR)/usr/bin
+	install -m644 etc/accessible-arch-installer.conf $(DESTDIR)/etc
 
