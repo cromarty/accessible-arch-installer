@@ -10,7 +10,8 @@ install :
 	cp -r ./boot "${AAI_DIR}"
 	cp -r ./extra "${AAI_DIR}"
 	cp -r ./etc "${AAI_DIR}"
-	cp arch-installer.sh $(DESTDIR)$(bindir)
+
+	cp arch-installer.sh $(DESTDIR)/usr/bin
 	cp etc/accessible-arch-installer.conf $(DESTDIR)/etc
 
 
