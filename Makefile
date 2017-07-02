@@ -1,4 +1,4 @@
-AAI_DIR = "/usr/share/accessible-arch-installer"
+AAI_DIR = $(DESTDIR)"/usr/share/accessible-arch-installer"
 
 all :
 
@@ -10,14 +10,7 @@ install :
 	cp -r ./boot "${AAI_DIR}"
 	cp -r ./extra "${AAI_DIR}"
 	cp -r ./etc "${AAI_DIR}"
-	cp arch-installer.sh /usr/bin
-	cp etc/accessible-arch-installer.conf /etc
-
-
-uninstall :
-	rm -r "${AAI_DIR}"
-	rm /usr/bin/arch-installer.sh
-	rm /etc/accessible-arch-installer.conf
-
+	cp arch-installer.sh $(DESTDIR)$(bindir)
+	cp etc/accessible-arch-installer.conf $(DESTDIR)/etc
 
 
