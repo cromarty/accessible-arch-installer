@@ -214,7 +214,7 @@ graphics() {
 			if [ "$?" -eq "0" ]; then
 				if [ "$GPU" == "$gr0" ]; then
 					pci_id=$(lspci -nn | grep "VGA" | egrep -o '\[.*\]' | awk '{print $NF}' | sed 's/.*://;s/]//')
-			        if (<"$aa_dir"/etc/nvidia340.xx grep "$pci_id" &>/dev/null); then
+			        if (<"$aai_dir"/etc/nvidia340.xx grep "$pci_id" &>/dev/null); then
         			    if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$nvidia_340msg" 10 60); then
         			    	if [ "$kernel" == "lts" ]; then
 								GPU="nvidia-340xx-lts"
@@ -224,7 +224,7 @@ graphics() {
         			    	GPU+=" nvidia-340xx-libgl nvidia-340xx-utils"
         			    	break
         			    fi
-					elif (<"$aa_dir"/etc/nvidia304.xx grep "$pci_id" &>/dev/null); then
+					elif (<"$aai_dir"/etc/nvidia304.xx grep "$pci_id" &>/dev/null); then
            				if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$nvidia_304msg" 10 60); then
            					if [ "$kernel" == "lts" ]; then
 								GPU="nvidia-304xx-lts"
@@ -331,31 +331,31 @@ config_env() {
 
 	sh="/usr/bin/zsh"
 	arch-chroot "$ARCH" chsh -s /usr/bin/zsh &> /dev/null
-	cp -r "$aa_dir"/extra/desktop/ttf-zekton-rg "$ARCH"/usr/share/fonts
-	cp "$aa_dir"/extra/.zshrc "$ARCH"/root/
-	cp "$aa_dir"/extra/.zshrc "$ARCH"/etc/skel/
-	cp "$aa_dir"/extra/desktop/arch-anywhere-icon.png "$ARCH"/root/.face
-	cp "$aa_dir"/extra/desktop/arch-anywhere-icon.png "$ARCH"/etc/skel/.face
-	cp -r "$aa_dir"/extra/desktop/{arch-anywhere-wallpaper.png,arch-anywhere-icon.png} "$ARCH"/usr/share/pixmaps
+	cp -r "$aai_dir"/extra/desktop/ttf-zekton-rg "$ARCH"/usr/share/fonts
+	cp "$aai_dir"/extra/.zshrc "$ARCH"/root/
+	cp "$aai_dir"/extra/.zshrc "$ARCH"/etc/skel/
+	cp "$aai_dir"/extra/desktop/arch-anywhere-icon.png "$ARCH"/root/.face
+	cp "$aai_dir"/extra/desktop/arch-anywhere-icon.png "$ARCH"/etc/skel/.face
+	cp -r "$aai_dir"/extra/desktop/{arch-anywhere-wallpaper.png,arch-anywhere-icon.png} "$ARCH"/usr/share/pixmaps
 
 	if (grep "AA-Xfce" <<<"$config_DE" &>/dev/null); then
-		for file in $(ls -A "$aa_dir/extra/desktop/xfce4"); do
-			cp -r "$aa_dir/extra/desktop/xfce4/$file" "$ARCH"/root/
-			cp -r "$aa_dir/extra/desktop/xfce4/$file" "$ARCH"/etc/skel/
+		for file in $(ls -A "$aai_dir/extra/desktop/xfce4"); do
+			cp -r "$aai_dir/extra/desktop/xfce4/$file" "$ARCH"/root/
+			cp -r "$aai_dir/extra/desktop/xfce4/$file" "$ARCH"/etc/skel/
 		done
-		cp -r "$aa_dir"/extra/desktop/arch-anywhere-wallpaper.png "$ARCH"/usr/share/backgrounds/xfce/
+		cp -r "$aai_dir"/extra/desktop/arch-anywhere-wallpaper.png "$ARCH"/usr/share/backgrounds/xfce/
 		cp "$ARCH"/usr/share/backgrounds/xfce/arch-anywhere-wallpaper.png "$ARCH"/usr/share/backgrounds/xfce/xfce-teal.jpg
 	fi
 
 	if (grep "AA-Openbox" <<<"$config_DE" &>/dev/null); then
-		for file in $(ls -A "$aa_dir/extra/desktop/openbox"); do
-			cp -r "$aa_dir/extra/desktop/openbox/$file" "$ARCH"/root/
-			cp -r "$aa_dir/extra/desktop/openbox/$file" "$ARCH"/etc/skel/
+		for file in $(ls -A "$aai_dir/extra/desktop/openbox"); do
+			cp -r "$aai_dir/extra/desktop/openbox/$file" "$ARCH"/root/
+			cp -r "$aai_dir/extra/desktop/openbox/$file" "$ARCH"/etc/skel/
 		done
-		cp -r "$aa_dir"/extra/desktop/Arc/openbox-3 "$ARCH"/usr/share/themes/Arc
-		cp -r "$aa_dir"/extra/desktop/Arc-Dark/openbox-3 "$ARCH"/usr/share/themes/Arc-Dark
-		cp -r "$aa_dir"/extra/desktop/Arc-Darker/openbox-3 "$ARCH"/usr/share/themes/Arc-Darker
-		cp -r "$aa_dir"/extra/desktop/obpower.sh "$ARCH"/usr/bin/obpower
+		cp -r "$aai_dir"/extra/desktop/Arc/openbox-3 "$ARCH"/usr/share/themes/Arc
+		cp -r "$aai_dir"/extra/desktop/Arc-Dark/openbox-3 "$ARCH"/usr/share/themes/Arc-Dark
+		cp -r "$aai_dir"/extra/desktop/Arc-Darker/openbox-3 "$ARCH"/usr/share/themes/Arc-Darker
+		cp -r "$aai_dir"/extra/desktop/obpower.sh "$ARCH"/usr/bin/obpower
 		chmod +x "$ARCH"/usr/bin/obpower
 		if [ "$virt" == "vbox" ]; then
 			echo "VBoxClient-all &" >> "$ARCH"/etc/skel/.config/openbox/autostart

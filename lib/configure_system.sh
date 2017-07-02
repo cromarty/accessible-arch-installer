@@ -185,21 +185,21 @@ configure_system() {
 	if [ "$sh" == "/bin/bash" ]; then
 		cp "$ARCH"/etc/skel/.bash_profile "$ARCH"/root/
 	elif [ "$sh" == "/usr/bin/zsh" ]; then
-		cp "$aa_dir"/extra/.zshrc "$ARCH"/root/
-		cp "$aa_dir"/extra/.zshrc "$ARCH"/etc/skel/
+		cp "$aai_dir"/extra/.zshrc "$ARCH"/root/
+		cp "$aai_dir"/extra/.zshrc "$ARCH"/etc/skel/
 	elif [ "$shell" == "fish" ]; then
-		echo "exec fish" >> "$aa_dir"/extra/.bashrc-root
-		echo "exec fish" >> "$aa_dir"/extra/.bashrc
+		echo "exec fish" >> "$aai_dir"/extra/.bashrc-root
+		echo "exec fish" >> "$aai_dir"/extra/.bashrc
 	elif [ "$shell" == "tcsh" ]; then
-		cp "$aa_dir"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/root/
-		cp "$aa_dir"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/etc/skel/
+		cp "$aai_dir"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/root/
+		cp "$aai_dir"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/etc/skel/
 	elif [ "$shell" == "mksh" ]; then
-		cp "$aa_dir"/extra/.mkshrc "$ARCH"/root/
-		cp "$aa_dir"/extra/.mkshrc "$ARCH"/etc/skel/
+		cp "$aai_dir"/extra/.mkshrc "$ARCH"/root/
+		cp "$aai_dir"/extra/.mkshrc "$ARCH"/etc/skel/
 	fi
 
-	cp "$aa_dir"/extra/.bashrc-root "$ARCH"/root/.bashrc
-	cp "$aa_dir"/extra/.bashrc "$ARCH"/etc/skel/
+	cp "$aai_dir"/extra/.bashrc-root "$ARCH"/root/.bashrc
+	cp "$aai_dir"/extra/.bashrc "$ARCH"/etc/skel/
 
 }
 
