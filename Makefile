@@ -4,12 +4,11 @@ all :
 
 
 install :
-	install -m644 -d ./lang /usr/share/accessible-arch-installer
-	install -m644 -d ./lib /usr/share/accessible-arch-installer
-	install -m644 -d ./boot /usr/share/accessible-arch-installer
-	install -m644 -d ./extra /usr/share/accessible-arch-installer
-	install -m644 -d ./etc /usr/share/accessible-arch-installer
+	install -D -m644 boot/* $(DESTDIR)/usr/share/accessible-arch-installer/boot/
 
-	install -m755 arch-installer.sh --target-directory=$(DESTDIR)/usr/bin
-	install -m644 etc/accessible-arch-installer.conf --target-directory=$(DESTDIR)/etc
+#install -D -m644 etc/* "$(DESTDIR)/usr/share/accessible-arch-installer/etc/"
+#install -D -m644 lang/*.conf "$(DESTDIR)/usr/share/accessible-arch-installer/lang/"
+#install -D -m644 lib/* "$(DESTDIR)/usr/share/accessible-arch-installer/lib/"
+#install -D -m644 extra/* "$(DESTDIR)/usr/share/accessible-arch-installer/extra/"
+#install -m755 accessible-arch-installer.sh $(DESTDIR)/usr/bin/accessible-arch-installer.sh
 
