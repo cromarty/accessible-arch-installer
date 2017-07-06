@@ -10,8 +10,10 @@ install :
 	mkdir -p $(DESTDIR)/usr/share/accessible-arch-installer/lib
 	cp -r ./lib/ $(DESTDIR)/usr/share/accessible-arch-installer/
 	chmod 0644 $(DESTDIR)/usr/share/accessible-arch-installer/lib/*.sh
+	mkdir -p $(DESTDIR)/etc
 	install -m644 ./etc/dialogrc $(DESTDIR)/etc/dialogrc
 	install -m644 ./etc/accessible-arch-installer.conf $(DESTDIR)/etc/accessible-arch-installer.conf
+	mkdir -p $(DESTDIR)/usr/bin
 	install -m755 accessible-arch-installer.sh $(DESTDIR)/usr/bin/accessible-arch-installer.sh
 
 uninstall :
