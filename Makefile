@@ -14,3 +14,8 @@ install :
 	install -m644 ./etc/accessible-arch-installer.conf $(DESTDIR)/etc/accessible-arch-installer.conf
 	install -m755 accessible-arch-installer.sh $(DESTDIR)/usr/bin/accessible-arch-installer.sh
 
+uninstall :
+	rm $(DESTDIR)/usr/bin/accessible-arch-installer.sh
+	rm $(DESTDIR)/etc/dialogrc
+	rm $(DESTDIR)/etc/accessible-arch-installer.conf
+	rm -r $(DESTDIR)/usr/share/accessible-arch-installer
